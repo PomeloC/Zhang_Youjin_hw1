@@ -1,6 +1,5 @@
 """
-given a text file will create a new text file in
-which all the lines from the original file are numbered from 1 to n 
+write a program that given a text file will create a new text file in which all the lines from the original file are numbered from 1 to n 
 """
 
 def text_lines(in_file_name, out_file_name):
