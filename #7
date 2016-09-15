@@ -1,0 +1,27 @@
+# Question 7: Calculate average length of word
+'''Calculate average length of word
+
+   Users can enter the name of a file. The function can return the average length 
+   of the word stored in the file.
+'''
+# define a new function
+def cal_aver(name):
+    # Open the file.  
+    file = open(name)
+    # Read and convert uppercase to lowercase.
+    word = file.read().lower()
+    # Overlook punctuation in the passage.
+    for pun in ('!','?',',','.',"'",'"',':'):
+        word = word.replace(pun,'')
+    word = word.replace('\n',' ')
+    # Split every words
+    word = word.split(' ')
+    # creat a var. to store the length of total words
+    sum_total = 0
+    # Use for loop to add length of each word to the sum_total.
+    for i in range(len(word)):
+        sum_total += len(word[i])
+    # show the average length of word
+    print(sum_total/len(word))
+# Use the defined function. Users can input the name or the path of a file.
+cal_aver(input('What is your file name?') )
