@@ -1,0 +1,16 @@
+"""
+Write a procedure char_freq_table()that, when run in a terminal,
+accepts a file name from the user, builds a frequency listing of
+the characters contained in the file, and prints a sorted and
+nicely formatted character frequency table to the screen. 
+"""
+
+def displaycft(cft):
+    for a, b in sorted(cft.items()):
+        print(a, b)   
+        
+def char_freq_table(file):
+    file = open('untitled1.txt').read()
+    return displaycft({letter:file.count(letter) for letter in file})
+
+print(char_freq_table('untitled1.txt'))
