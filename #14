@@ -1,3 +1,8 @@
+"""
+ An alternade is a word in which its letters, taken alternatively in a strict sequence, and used in the same order as the original word,
+make up at least two other words.
+"""
+
 f = open("wordlist.txt",'r')
 for line in f:
     line = line.strip()
