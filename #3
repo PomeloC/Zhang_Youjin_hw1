@@ -5,10 +5,12 @@ the characters contained in the file, and prints a sorted and
 nicely formatted character frequency table to the screen. 
 """
 
+#define displaycft(cft)
 def displaycft(cft):
     for a, b in sorted(cft.items()):
         print(a, b)   
-        
+
+#define char_freg_table(file)       
 def char_freq_table(file):
     file = open('untitled1.txt').read()
     return displaycft({letter:file.count(letter) for letter in file})
