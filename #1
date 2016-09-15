@@ -13,16 +13,15 @@ for char in something:
    if char not in punctuations:
        no_punct = no_punct + char
        
-
+#define
 def reverse(no_punct):
     return no_punct[::-1]
 
-#define is_palindrome
 def is_palindrome(no_punct):
     return no_punct.lower() == reverse(no_punct.lower())
 
 if is_palindrome(no_punct):
-    print("True")
+    print("Yes, it is a palindrome")
     print(something)
 else:
-    print("False")
+    print("No, it is not a palindrome")
