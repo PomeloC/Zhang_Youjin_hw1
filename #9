@@ -11,27 +11,23 @@ good idea to work with (say) colour words only.
 
 import random
 import itertools
+#import random and itertools
+words ={"red","black","brown","white","yellow","blue","green"}
+#give the words range like some colors
+word=random.sample(words,1)[0]
+#randomly pick some color words and take the first one out of them
+x=list(itertools.permutations(word))
+#rearrange the letters of the word picked fromm words
+str1=''.join(x[1])
+#use join to connect the all letters from list which contains one word without space or other things
+print(str1)
+#print the rearranged the word
 
-def guess_color_by_anagram():
-    # Get a k, here k = 1, length list of unique elements 
-    #   chosen from the population sequence or set. 
-    # [0] is to get the first and only element from the list.
-    words = {"red","black","brown","white","yellow","blue","green"}
-    word = random.sample(words,1)[0]
-    
-    # Get all possible permutations of characters by permutating characters in the word.
-    all_permutations = list(itertools.permutations(word))
-    # Random pick a permutation.
-    # And join the characters from that permutation to consturct a string.
-    random_idx = random.randint(1,len(all_permutations) - 1)
-    string = ''.join(all_permutations[random_idx])
-    
-    print('Color word anagram:',string)
-    
-    word_input = input("Enter a color word you guess: ")
-    while word_input != word:
-        print("your guess is incorrect")
-        word_input = input("Enter a color word you guess: ")
-    print("your guess is correct")
-
-guess_color_by_anagram()
+print("Colour word anagram:  ")
+wordinput=input("Enter a color word you guess: ")
+while wordinput!=word:
+    print("your guess is incorrect")
+    wordinput=input("Enter a color word you guess: ")
+ #use while loop to distinguish if the wordinput equals the picked word before it is rearranged 
+ #keep inputing the word you guess until your answer is the picked word
+print("your guess is correct")
