@@ -1,0 +1,15 @@
++f = open("wordlist.txt",'r')
+ +for line in f:
+ +    line = line.strip()
+ +    length = len(line)
+ +    word1 = ""
+ +    word2 = ""
+ +    for i in range(0, length,2):
+ +        word1 += line[i]
+ +        try:
+ +            word2 += line[i+1]
+ +        except:
+ +            pass
+ +        word1 = word1.strip()
+ +        word2 = word2.strip()
+ +        print(word1+" and "+word2)
