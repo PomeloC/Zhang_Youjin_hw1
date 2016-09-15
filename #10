@@ -8,22 +8,32 @@ following way: >>> import lingo snakeClue: snak(e) fiest Clue: f[i](e)s(t) times
 """
 
 
-word = list("tiger")
-print("import lingo")
-guess = []
-while True:
-    guess = list(input("Please enter your guess: "))
-    if guess == word:
-        print("You guessed the right word!")
-        break
-    else:
-        cluelst = guess
-        for i in range(0, len(word)):
-            if guess[i] == word[i]:
-                cluelst[i] = "[" + guess[i] + "]" 
-        for i in range(0, len(word)):
-            for j in range(0, len(word)):
-                if guess[i] == word[j]:
-                    cluelst[i] = "(" + guess[i] + ")"
-        clue = "".join(cluelst)
-        print("Clue: " + clue)
+def guess_word(word_string):
+    word = list(word_string)
+    
+    while True:
+        guess = list(input('Please enter your guess of a {} characters long word: '\
+            .format(len(word_string))))
+        if guess == word:
+            print('You guessed the right word!')
+            break
+        else:
+            clue_lst = guess
+            
+            # The characters that are fully correct, 
+            #   with respect to identity as well as to position. Use [] to show the character.
+            for i in range(0, len(guess)):
+                if i < len(word) and guess[i] == word[i]:
+                    clue_lst[i] = "[" + guess[i] + "]" 
+                    continue
+            
+                # The characters that are indeed present in the word, 
+                #   but which are placed in the wrong position. Use () to show the character.
+                for j in range(0, len(word)):
+                    if guess[i] == word[j]:
+                        clue_lst[i] = "(" + guess[i] + ")"
+          
+            clue = "".join(clue_lst)
+            print('Clue: ' + clue)
+
+guess_word('tiger')
