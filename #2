@@ -7,17 +7,31 @@ from the user and finds and prints all pairs of words that are
 semordnilaps to the screen. 
 """
 
-def semordnilap(file):
-    file = open ('untitled1.txt').read()
-    words = file.split()
-    results = []
-    for word_1 in words:
-        for word_2 in words:
-            if word_1 == word_2[::-1]:
-                results.append(word_1)
-    return results
-if semordnilap('untitled1.txt'):
-    print("Yes, it is a semordnilap")
-    print(semordnilap('untitled1.txt'))
-else:
-    print("No, it is not a semordnilap ")
+# The re lib provides regular expression matching operations.
+import re
+
+def find_semordnilaps(file_name):
+    file = open(file_name,'r')
+    # Read and convert uppercase to lowercase.
+    text = file.read().lower() 
+    
+    # Use strip() to revome White space at the beginnign and the end of a text string
+    # Then split words in the text by any (at least one) whitespace character
+    #   which is equivalent to the set [\t\n\r\f\v].
+    words = re.split('\s+', text.strip())
+    
+    # Remove dupicated words.
+    words = list(set(words))
+    
+    for idx1 in range(0, len(words)):
+        for idx2 in range(idx1+1, len(words)):
+            word1 = words[idx1]
+            word2 = words[idx2]
+            if word1 == reverse(word2):
+                print(word1,word2)
+ 
+def reverse(text):
+    return text[::-1]
+    
+find_semordnilaps('sample_input.txt')
+
