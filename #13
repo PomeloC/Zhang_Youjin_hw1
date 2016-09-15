@@ -1,26 +1,54 @@
-from random import randrange
-import re
+"""Pokemon"""
 
-def brackets(n):
-    i, result, brackets = 0, '', '[]'
-    
-	# Add brackets in an arbitrary order
-    while i < n*2:
-        result += brackets[randrange(len(brackets))]
-        i+=1
+import re #import regular expression 
 
-	# Save our string of brackets
-    bracket_string = result
+def poke_names(file):
+	# save all the names from the file as read
+    with open(file, 'r') as f:
+        names = re.findall(r'\w+', f.read())
 
-	# Remove all found pairs of brackets using regex
-    while len(re.findall(r'\[\]', result)) > 0:
-        result = re.sub(r'\[\]', '', result)
+	# set two variable as empty to start 
+    longest_series, current_series = [], []
 
-	# If after removing all pairs of brackets the string is still not empty
-    if len(result) > 0:
-        print(bracket_string, 'NOT OK')
-    else:
-        print(bracket_string, 'OK')
+	# return to the next word with last letter as initial 
+	# of the previous word
+    def name_starts_with(lastletter, names):
+        for index, name in enumerate(names):
+            if name.startswith(lastletter):
+                return index
+        return False
+
+	
+	# for loop to add current to current series 
+    for name in names:
+        current_name = name
+        current_series.append(current_name) # Add the first name to the series
+
+        namelist = names[:] # save all names in namelist
+        namelist.pop(namelist.index(current_name)) # Remove the 1st name 
+
+        index = name_starts_with(current_name[-1], namelist)
+        # get the last element of current_name
+
+		#determine there is the next word with last letter as initial 
+	# of the previous word
+        while index is not False:
+            current_name = namelist[index] # Get this name
+            current_series.append(current_name) # Add it to the series
+            namelist.pop(index) # Remove it from the list
+            index = name_starts_with(current_name[-1], namelist) 
+            # Get the index of the next name
+
+		# determine the length of current series and longest series 
+            if len(current_series) > len(longest_series):
+                longest_series = current_series
+
+		# make current series empty
+                current_series = []
+            else:
+                break
+	# Print the longest series
+        print(longest_series)
 
 #test
-brackets(10) 
+poke_names('untitled6.txt')
