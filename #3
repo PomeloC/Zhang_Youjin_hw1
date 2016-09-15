@@ -5,14 +5,20 @@ the characters contained in the file, and prints a sorted and
 nicely formatted character frequency table to the screen. 
 """
 
-#define displaycft(cft)
+
 def displaycft(cft):
+#define a function to displace the frequency and corresponding letter
     for a, b in sorted(cft.items()):
-        print(a, b)   
-
-#define char_freg_table(file)       
-def char_freq_table(file):
-    file = open('untitled1.txt').read()
+    # a as the letter and b as the letter's frequency 
+        print(a, b) 
+        #print the letter and frequency pair   
+        
+def char_freq_table(filepath):
+#define a function to look for the frequency of letter
+    file = open(filepath).read()
+    #open a file as only read file
     return displaycft({letter:file.count(letter) for letter in file})
-
-print(char_freq_table('untitled1.txt'))
+    #count the letters' frequency in file and write them as letter and corresponding frequency
+    #put the "letter" into function displaycft
+    #Now, letter and corresponding frequency is set up and next is to sort them from a to z
+print(char_freq_table('untitled1.txt'))#print the output
