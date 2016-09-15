@@ -1,3 +1,7 @@
+"""
+ Define a function that given the file name of a text will return all its hapaxes.
+"""
+
 def hapax(file_name):
     """
     Construct a dictionary that saves each word of text as its keys, 
