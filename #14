@@ -3,18 +3,18 @@
 make up at least two other words.
 """
 
-f = open("wordlist.txt",'r')
-for line in f:
-    line = line.strip()
-    length = len(line)
-    word1 = ""
-    word2 = ""
-    for i in range(0, length,2):
-        word1 += line[i]
+file = open("untitled7.txt",'r')
+for line in file:
+    line = line.strip()#remove all all whitespace at the start and end.
+    length = len(line)#get length of line
+    wordfirst = ""
+    wordsecond= ""#set these two variables empty
+    for i in range(0, length,2):#for loop to add line[i] to wordfirst one by one
+        wordfirst += line[i]
         try:
-            word2 += line[i+1]
+            wordsecond += line[i+1]#add the next line[i+1 to wordsecon]
         except:
             pass
-        word1 = word1.strip()
-        word2 = word2.strip()
+        word1 = wordfirst.strip()#strip the whitespace off wordfirst
+        word2 = wordsecond.strip()#strip the whitespace off wordsecond
         print(word1+" and "+word2)
