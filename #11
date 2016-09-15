@@ -1,3 +1,8 @@
+"""
+ splitting a text into sentences. Program: given the name of a text file is able to write its content with each sentence on a separate
+line. 
+"""
+
 import re
 
 def sentence_splitter(file_name):
