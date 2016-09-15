@@ -1,0 +1,28 @@
+"""
+write a 
+Groups A &	B 510	Fall	2016
+Gp-2016
+procedure speak_ICAO()able to translate any text (i.e. any string)
+into spoken ICAO words. 
+"""
+
+import os, time
+punctuations='''!()-[]{};:'"\,<>./?@#$%^&*_~ '''
+
+d = {'a':'alfa', 'b':'bravo', 'c':'charlie', 'd':'delta', 'e':'echo', 
+	 'f':'foxtrot', 'g':'golf', 'h':'hotel', 'i':'india', 'j':'juliett', 
+	 'k':'kilo', 'l':'lima', 'm':'mike', 'n':'november', 'o':'oscar', 
+	 'p':'papa', 'q':'quebec', 'r':'romeo', 's':'sierra', 't':'tango', 
+	 'u':'uniform', 'v':'victor', 'w':'whiskey', 'x':'x-ray', 'y':'yankee', 
+	 'z':'zulu'}
+
+def speak_icao(str):
+    words = str.split()
+    for word in words:
+        for char in word:
+            if char not in punctuations:
+               os.system('say ' + d[char.lower()])
+               time.sleep(0.1)
+               time.sleep(1)
+
+speak_icao("Hi,I am a student")
