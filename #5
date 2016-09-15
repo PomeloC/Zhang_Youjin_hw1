@@ -1,0 +1,30 @@
+def hapax(file_name):
+    """
+    Construct a dictionary that saves each word of text as its keys, 
+        and the counts of the words as its values.
+    Construct a list that returns a word which occurs only once, named hapax list
+    """
+    count_dict = {}
+    hapax_list = []
+    
+    f = open(file_name,'r')
+    text = f.read()    
+    
+    # Each word in the text is splitted by blank space
+    for word in text.split(' '):
+        # Ignores word capitalization
+        word = word.lower()
+        # Check the occurance of each word
+        if word in count_dict:
+           count_dict[word] = count_dict[word] + 1
+        else:
+            count_dict[word] = 1
+     
+    # 'word' as dictionary keys and 'count' as dictionary values
+    for word,count in count_dict.items():
+        if count == 1:
+            hapax_list.append(word)
+    
+    return hapax_list
+        
+print(hapax('sample_input.txt'))
