@@ -3,7 +3,7 @@
 make up at least two other words.
 """
 
-file = open("untitled7.txt",'r')
+file = open("hw14.txt",'r')
 for line in file:
     line = line.strip()#remove all all whitespace at the start and end.
     length = len(line)#get length of line
