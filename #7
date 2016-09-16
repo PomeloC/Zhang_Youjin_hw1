@@ -24,4 +24,4 @@ def cal_aver(name):
     # show the average length of word
     print(sum_total/len(word))
 # Use the defined function. Users can input the name or the path of a file.
-cal_aver(input('What is your file name?') )
+cal_aver("hw7.txt")
